@@ -1,12 +1,12 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   jpa:
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:h2:~/bancodigital
+    url: jdbc:h2:~/bancodigital2
     username: root
     password: root
     driver-class-name: org.h2.Driver
@@ -14,3 +14,8 @@ spring:
     console:
       enabled: true
       path: /h2
+  flyway:
+    url: jdbc:h2:~/bancodigital2
+    user: root
+    password: root
+    enabled: true
