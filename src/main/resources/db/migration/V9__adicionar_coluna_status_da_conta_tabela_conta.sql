@@ -1,0 +1,1 @@
+ALTER TABLE conta ADD status_da_conta varchar(15);

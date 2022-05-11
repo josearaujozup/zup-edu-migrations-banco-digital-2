@@ -1,6 +1,7 @@
 package com.zupedu.bancodigital.conta;
 
 import com.zupedu.bancodigital.produto.Produto;
+import com.zupedu.bancodigital.produto.TipoDeCobranca;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -27,6 +28,11 @@ public class Conta {
 
     private LocalDateTime dataCriacao;
 
+    private LocalDateTime dataDeInativacao;
+
+    @Enumerated(EnumType.STRING)
+    private StatusDaConta statusDaConta;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "conta_produto", joinColumns=
             {@JoinColumn(name="id_conta")}, inverseJoinColumns=
@@ -39,7 +45,8 @@ public class Conta {
 
     public Conta(String documentoTitular, String nomeTitular,
                  int agencia,long numero, BigDecimal saldo,
-                 List<Produto> produtos) {
+                 List<Produto> produtos, LocalDateTime dataDeInativacao,
+                 StatusDaConta statusDaConta) {
         this.documentoTitular = documentoTitular;
         this.nomeTitular = nomeTitular;
         this.agencia = agencia;
@@ -47,6 +54,8 @@ public class Conta {
         this.saldo = saldo;
         this.dataCriacao = LocalDateTime.now();
         this.produtos = produtos;
+        this.dataDeInativacao = dataDeInativacao;
+        this.statusDaConta = statusDaConta;
     }
 
     public Long getId() {

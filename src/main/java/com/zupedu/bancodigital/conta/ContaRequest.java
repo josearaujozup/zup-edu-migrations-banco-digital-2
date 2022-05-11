@@ -25,6 +25,10 @@ public class ContaRequest {
 
     private BigDecimal saldo;
 
+    private LocalDateTime dataDeInativacao;
+
+    private StatusDaConta statusDaConta;
+
     @NotEmpty
     private List<Long> produtos;
 
@@ -54,6 +58,6 @@ public class ContaRequest {
                 .collect(Collectors.toList());
 
         return new Conta(this.documentoTitular, this.nomeTitular,
-                this.agencia, this.numero, this.saldo, produtos);
+                this.agencia, this.numero, this.saldo, produtos, this.dataDeInativacao, this.statusDaConta);
     }
 }

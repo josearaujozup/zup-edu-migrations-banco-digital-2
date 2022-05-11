@@ -1,0 +1,1 @@
+ALTER TABLE conta ADD data_de_inativacao timestamp;
